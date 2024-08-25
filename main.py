@@ -1,6 +1,8 @@
 # this allows us to use code from
 # the open-source pygame library
 # throughout this file
+import sys
+
 import pygame
 
 from asteroid import Asteroid
@@ -35,6 +37,11 @@ def main():
 
         for obj in updatable:
             obj.update(dt)
+
+        for obj in asteroids:
+            if obj.check_collision(player):
+                print("Game over!")
+                sys.exit()
 
         screen.fill('black')
 
